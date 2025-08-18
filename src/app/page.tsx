@@ -14,41 +14,33 @@ const sampleProducts = [
     id: "1",
     name: "Manuel Vakumlu Baskı Makinesi",
     description: "Küçük ve orta ölçekli işletmeler için ideal manuel serigrafi makinesi",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
+    image: "/images/manuel-vakumlu-makinesi/makine1.jpeg",
     category: "Baskı Makineleri",
     features: ["Maksimum 50x70cm baskı alanı", "Hassas ayar sistemi", "Dayanıklı alüminyum şase"],
-    rating: 4.8,
-    isNew: true,
-    isPopular: true,
   },
   {
     id: "2",
     name: "60x110 Kurutma Rafı",
     description: "Yüksek verimlilik için tasarlanmış kurutma rafı",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
+    image: "/images/kurutma-raflari/60x110-kurutma-rafi.jpg",
     category: "Kurutma Rafları",
     features: ["60x110cm boyutlarında", "Çok katmanlı tasarım", "Kolay montaj"],
-    rating: 4.9,
-    isPopular: true,
   },
   {
-    id: "3",
-    name: "50x70 Kurutma Rafı",
-    description: "Kompakt boyutlarda kurutma rafı",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
-    category: "Kurutma Rafları",
-    features: ["50x70cm boyutlarında", "Hafif tasarım", "Mobil kullanım"],
-    rating: 5.0,
-    isNew: true,
+    id: "5",
+    name: "4 Renk 1 İstasyonlu Serigrafi Baskı Tezgahı",
+    description: "4 renk baskı kapasitesine sahip tek istasyonlu serigrafi tezgahı",
+    image: "/images/4-renk-1-istasyonlu/tezgah.jpg",
+    category: "Baskı Makineleri",
+    features: ["4 renk baskı", "Tek istasyon", "Çok renkli baskı"],
   },
   {
-    id: "4",
-    name: "PVC Boya",
-    description: "PVC malzemeler için özel formül serigrafi boyası",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
-    category: "Serigrafi Boyaları",
-    features: ["Yüksek örtücülük", "PVC uyumlu", "Hızlı kuruma"],
-    rating: 4.7,
+    id: "9",
+    name: "Tişört Baskı Tezgahı",
+    description: "Tişört baskıları için özel tasarlanmış profesyonel baskı tezgahı",
+    image: "/images/tisort-baski-tezgahi/tisort-tezgahi.jpg",
+    category: "Baskı Makineleri",
+    features: ["Tişört uyumlu", "Hassas baskı", "Ergonomik tasarım"],
   },
 ];
 
@@ -61,12 +53,12 @@ const features = [
   {
     icon: Users,
     title: "Deneyimli Ekip",
-    description: "40+ yıllık deneyime sahip uzman mühendislik ekibi"
+    description: "45+ yıllık deneyime sahip uzman mühendislik ekibi"
   },
   {
     icon: Clock,
     title: "Hızlı Teslimat",
-    description: "Siparişinizden itibaren 7-15 iş günü içinde teslimat garantisi"
+    description: "Anında Stok Teslim"
   },
   {
     icon: Shield,
@@ -90,11 +82,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Neden OkanGökhan?
             </h2>
-            <p className="text-xl text-[#4B4B4B] max-w-3xl mx-auto">
-              40 yılı aşkın deneyimimizle serigrafi sektörünün güvenilir ortağı olarak 
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              45 yılı aşkın deneyimimizle serigrafi sektörünün güvenilir ortağı olarak 
               kaliteli ve yenilikçi çözümler sunuyoruz.
             </p>
           </motion.div>
@@ -109,15 +101,15 @@ export default function Home() {
               >
                 <Card className="h-full text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <div className="w-16 h-16 bg-[#F25C05]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <feature.icon className="w-8 h-8 text-[#F25C05]" />
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <feature.icon className="w-8 h-8 text-primary" />
                     </div>
-                    <CardTitle className="text-xl font-semibold text-[#1A1A1A]">
+                    <CardTitle className="text-xl font-semibold text-foreground">
                       {feature.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-[#4B4B4B]">
+                    <CardDescription className="text-muted-foreground">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
@@ -129,7 +121,7 @@ export default function Home() {
       </section>
 
       {/* Öne Çıkan Ürünler */}
-      <section className="py-20 bg-[#F2F2F2]">
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -137,10 +129,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Öne Çıkan Ürünlerimiz
             </h2>
-            <p className="text-xl text-[#4B4B4B] max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Her ihtiyaca uygun serigrafi makineleri ve ekipmanları ile 
               üretiminizi bir üst seviyeye taşıyın.
             </p>
@@ -165,7 +157,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Button size="lg" className="bg-[#F25C05] hover:bg-[#F25C05]/90" asChild>
+            <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
               <Link href="/urunler">
                 Tüm Ürünleri Gör
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -185,16 +177,16 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-6"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                 OkanGökhan Serigrafi Makineleri
               </h2>
-              <p className="text-lg text-[#4B4B4B] leading-relaxed">
-                1980 yılında İstanbul'da kurulan firmamız, serigrafi baskı makinaları, kurutma rafları, 
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                1980 yılında İstanbul&apos;da kurulan firmamız, serigrafi baskı makinaları, kurutma rafları, 
                 serigrafi kalıpları ve boyalarını yüksek kalitede üretmek Türkiye ve Dünya piyasasına 
                 pazarlamak üzerine faaliyet göstermektedir.
               </p>
-              <p className="text-lg text-[#4B4B4B] leading-relaxed">
-                40 yıllık tecrübesi ve deneyimleri ile serigraf piyasasında A kalite, dayanıklı, 
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                45 yıllık tecrübesi ve deneyimleri ile serigraf piyasasında A kalite, dayanıklı, 
                 gayet kolay ve anlaşılır ürünleri, bünyesinde barındırdığı deneyimli ve uzman 
                 çalışma arkadaşlarıyla serigraf piyasasında daima 1 numara, en çok tavsiye edilen 
                 ve sevilen bir firma olmuştur.
@@ -220,14 +212,14 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="bg-gradient-to-br from-[#F25C05] to-[#F25C05]/80 rounded-2xl p-8 text-white">
+              <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 text-white">
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold">40+ Yıllık Deneyim</h3>
+                      <h3 className="text-xl font-semibold">45+ Yıllık Deneyim</h3>
                       <p className="text-white/90">Serigrafi sektöründe lider</p>
                     </div>
                   </div>
@@ -257,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#F25C05]">
+      <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -269,21 +261,16 @@ export default function Home() {
               Size Özel Serigrafi Çözümleri
             </h2>
             <p className="text-xl text-white/90">
-              40 yıllık deneyimimizle ihtiyaçlarınıza uygun en iyi serigrafi makinelerini sunalım.
+              45 yıllık deneyimimizle ihtiyaçlarınıza uygun en iyi serigrafi makinelerini sunalım.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                variant="secondary" 
-                onClick={() => {
-                  const message = "Merhaba, serigrafi makinesi hakkında bilgi almak istiyorum.";
-                  const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
-                  window.open(whatsappUrl, '_blank');
-                }}
+                variant="secondary"
               >
                 Teklif Al
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#F25C05]" asChild>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
                 <Link href="/iletisim">
                   İletişime Geç
                 </Link>

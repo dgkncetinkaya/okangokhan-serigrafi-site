@@ -60,31 +60,36 @@ const ContactPage = () => {
       icon: Phone,
       title: "Telefon",
       value: "+90 (542) 509 47 58",
-      description: "Ana telefon hattı"
+      description: "Ana telefon hattı",
+      link: "tel:+905425094758"
     },
     {
       icon: Phone,
       title: "Telefon",
       value: "+90 (535) 558 90 58",
-      description: "Mobil telefon"
+      description: "Mobil telefon",
+      link: "tel:+905355589058"
     },
     {
       icon: Phone,
       title: "Telefon",
       value: "+90 (212) 482 37 17",
-      description: "Sabit telefon"
+      description: "Sabit telefon",
+      link: "tel:+902124823717"
     },
     {
       icon: Mail,
       title: "E-posta",
       value: "dogukancetinkaya@okangokhan.com",
-      description: "Hızlı yanıt garantisi"
+      description: "Hızlı yanıt garantisi",
+      link: "mailto:dogukancetinkaya@okangokhan.com"
     },
     {
       icon: MapPin,
       title: "Adres",
       value: "Maltepe Mah. Akınsal San. Sit. D Blok No:37/38 Cevizlibağ/Zeytinburnu",
-      description: "Merkezi konum"
+      description: "Merkezi konum",
+      link: "https://maps.google.com/?q=OkanGökhan+Serigrafi+Makinaları+Maltepe+Mah.+Akınsal+San.+Sit.+D+Blok+No:37/38+Cevizlibağ/Zeytinburnu+İstanbul"
     },
     {
       icon: Clock,
@@ -110,26 +115,6 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#F2F2F2] to-[#E5E5E5]">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
-              İletişim
-            </h1>
-            <p className="text-xl text-[#4B4B4B] leading-relaxed mb-8">
-              40 yıllık deneyimimizle size en uygun serigrafi çözümlerini sunmak için 
-              buradayız. Bizimle iletişime geçin.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* İletişim Bilgileri */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -157,17 +142,28 @@ const ContactPage = () => {
               >
                 <Card className="h-full text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <div className="w-16 h-16 bg-[#F25C05]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <info.icon className="w-8 h-8 text-[#F25C05]" />
+                    <div className="w-16 h-16 bg-[#1A1A1A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <info.icon className="w-8 h-8 text-[#1A1A1A]" />
                     </div>
                     <CardTitle className="text-xl font-semibold text-[#1A1A1A]">
                       {info.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-lg font-semibold text-[#F25C05] mb-2">
-                      {info.value}
-                    </div>
+                    {info.link ? (
+                      <a 
+                        href={info.link}
+                        className="text-lg font-semibold text-[#1A1A1A] mb-2 hover:text-[#4B4B4B] transition-colors cursor-pointer block"
+                        target={info.link.startsWith('https') ? '_blank' : '_self'}
+                        rel={info.link.startsWith('https') ? 'noopener noreferrer' : undefined}
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <div className="text-lg font-semibold text-[#1A1A1A] mb-2">
+                        {info.value}
+                      </div>
+                    )}
                     <CardDescription className="text-[#4B4B4B]">
                       {info.description}
                     </CardDescription>
@@ -205,8 +201,8 @@ const ContactPage = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       className="text-center py-8"
                     >
-                      <div className="w-16 h-16 bg-[#F25C05]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <CheckCircle className="w-8 h-8 text-[#F25C05]" />
+                      <div className="w-16 h-16 bg-[#1A1A1A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle className="w-8 h-8 text-[#1A1A1A]" />
                       </div>
                       <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">
                         Mesajınız Gönderildi!
@@ -312,7 +308,7 @@ const ContactPage = () => {
                       <Button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="w-full bg-[#F25C05] hover:bg-[#F25C05]/90"
+                        className="w-full bg-[#1A1A1A] hover:bg-[#1A1A1A]/90"
                       >
                         {isSubmitting ? (
                           <>
@@ -368,31 +364,31 @@ const ContactPage = () => {
                 <Card className="border-0 shadow-lg">
                   <CardHeader>
                     <CardTitle className="text-lg font-semibold text-[#1A1A1A] flex items-center">
-                      <MessageSquare className="w-5 h-5 text-[#F25C05] mr-2" />
+                      <MessageSquare className="w-5 h-5 text-[#1A1A1A] mr-2" />
                       WhatsApp
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-[#4B4B4B] mb-3">
-                      Hızlı iletişim için WhatsApp'tan mesaj gönderin
+                      Hızlı iletişim için WhatsApp&apos;tan mesaj gönderin
                     </p>
                     <Button 
-                      className="w-full bg-[#F25C05] hover:bg-[#F25C05]/90"
+                      className="w-full bg-[#1A1A1A] hover:bg-[#1A1A1A]/90"
                       onClick={() => {
                         const message = "Merhaba, serigrafi makinesi hakkında bilgi almak istiyorum.";
                         const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
                         window.open(whatsappUrl, '_blank');
                       }}
-                    >
-                      WhatsApp'tan Mesaj Gönder
-                    </Button>
+                                          >
+                        WhatsApp&apos;tan Mesaj Gönder
+                      </Button>
                   </CardContent>
                 </Card>
 
                 <Card className="border-0 shadow-lg">
                   <CardHeader>
                     <CardTitle className="text-lg font-semibold text-[#1A1A1A] flex items-center">
-                      <Building className="w-5 h-5 text-[#F25C05] mr-2" />
+                      <Building className="w-5 h-5 text-[#1A1A1A] mr-2" />
                       Ofis Ziyareti
                     </CardTitle>
                   </CardHeader>
@@ -402,7 +398,7 @@ const ContactPage = () => {
                     </p>
                     <Button 
                       variant="outline" 
-                      className="w-full border-[#F25C05] text-[#F25C05] hover:bg-[#F25C05] hover:text-white"
+                      className="w-full border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white"
                       onClick={() => {
                         const message = "Merhaba, ofis ziyareti için randevu almak istiyorum.";
                         const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
@@ -480,7 +476,7 @@ const ContactPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#F25C05]">
+      <section className="py-20 bg-[#1A1A1A]">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -492,7 +488,7 @@ const ContactPage = () => {
               Hemen İletişime Geçin
             </h2>
             <p className="text-xl text-white">
-              40 yıllık deneyimimizle size en uygun serigrafi çözümlerini sunalım.
+              45 yıllık deneyimimizle size en uygun serigrafi çözümlerini sunalım.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" asChild>
@@ -500,7 +496,7 @@ const ContactPage = () => {
                   Hemen Ara
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#F25C05]" asChild>
+              <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-black" asChild>
                 <a href="mailto:dogukancetinkaya@okangokhan.com">
                   E-posta Gönder
                 </a>
@@ -513,4 +509,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage; 
+export default ContactPage;

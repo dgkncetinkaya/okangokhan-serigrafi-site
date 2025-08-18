@@ -74,7 +74,7 @@ const ServicesPage = () => {
       id: "5",
       title: "Danışmanlık Hizmeti",
       description: "Serigrafi sektöründe uzman danışmanlık",
-      longDescription: "Serigrafi işinizi kurmak veya geliştirmek için uzman danışmanlık hizmetleri sunuyoruz. 40 yıllık deneyimimizle size en uygun çözümleri öneriyoruz.",
+      longDescription: "Serigrafi işinizi kurmak veya geliştirmek için uzman danışmanlık hizmetleri sunuyoruz. 45 yıllık deneyimimizle size en uygun çözümleri öneriyoruz.",
       icon: Users,
       features: [
         "İş kurma danışmanlığı",
@@ -103,7 +103,7 @@ const ServicesPage = () => {
   ];
 
   const stats = [
-    { number: "40+", label: "Yıllık Deneyim", description: "Sektörde lider" },
+    { number: "45+", label: "Yıllık Deneyim", description: "Sektörde lider" },
     { number: "1000+", label: "Mutlu Müşteri", description: "Türkiye geneli" },
     { number: "24/7", label: "Teknik Destek", description: "Kesintisiz hizmet" },
     { number: "100%", label: "Müşteri Memnuniyeti", description: "Garantili kalite" }
@@ -118,7 +118,7 @@ const ServicesPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#F2F2F2] to-[#E5E5E5]">
+      <section className="py-20 bg-gradient-to-br from-muted to-input">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -126,11 +126,11 @@ const ServicesPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Hizmetlerimiz
             </h1>
-            <p className="text-xl text-[#4B4B4B] leading-relaxed mb-8">
-              40 yıllık deneyimimizle serigrafi sektöründe kapsamlı hizmetler sunuyoruz. 
+            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              45 yıllık deneyimimizle serigrafi sektöründe kapsamlı hizmetler sunuyoruz. 
               Ürün satışından sonra da yanınızdayız.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -142,9 +142,9 @@ const ServicesPage = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-2xl font-bold text-[#F25C05] mb-1">{stat.number}</div>
-                  <div className="text-sm font-semibold text-[#1A1A1A]">{stat.label}</div>
-                  <div className="text-xs text-[#4B4B4B]">{stat.description}</div>
+                  <div className="text-2xl font-bold text-primary mb-1">{stat.number}</div>
+                  <div className="text-sm font-semibold text-foreground">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground">{stat.description}</div>
                 </motion.div>
               ))}
             </div>
@@ -161,10 +161,10 @@ const ServicesPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Kapsamlı Hizmet Paketlerimiz
             </h2>
-            <p className="text-xl text-[#4B4B4B] max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Serigrafi makinelerinizin kurulumundan bakımına kadar her aşamada 
               profesyonel hizmet alabilirsiniz.
             </p>
@@ -182,19 +182,19 @@ const ServicesPage = () => {
                 <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-16 h-16 bg-[#F25C05]/10 rounded-full flex items-center justify-center">
-                        <service.icon className="w-8 h-8 text-[#F25C05]" />
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                        <service.icon className="w-8 h-8 text-primary" />
                       </div>
                       {service.isPopular && (
-                        <Badge className="bg-[#F25C05] hover:bg-[#F25C05]/90">
+                        <Badge className="bg-primary hover:bg-primary/90">
                           Popüler
                         </Badge>
                       )}
                     </div>
-                    <CardTitle className="text-xl font-semibold text-[#1A1A1A]">
+                    <CardTitle className="text-xl font-semibold text-foreground">
                       {service.title}
                     </CardTitle>
-                    <CardDescription className="text-[#4B4B4B]">
+                    <CardDescription className="text-muted-foreground">
                       {service.description}
                     </CardDescription>
                   </CardHeader>
@@ -203,15 +203,15 @@ const ServicesPage = () => {
                       <div className="space-y-2">
                         {service.features.slice(0, 4).map((feature, featureIndex) => (
                           <div key={featureIndex} className="flex items-center space-x-2">
-                            <CheckCircle className="w-4 h-4 text-[#F25C05] flex-shrink-0" />
-                            <span className="text-sm text-[#4B4B4B]">{feature}</span>
+                            <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                            <span className="text-sm text-muted-foreground">{feature}</span>
                           </div>
                         ))}
                       </div>
                       
                       <div className="pt-4 space-y-2">
                         <Button 
-                          className="w-full bg-[#F25C05] hover:bg-[#F25C05]/90"
+                          className="w-full bg-primary hover:bg-primary/90"
                           onClick={() => handleWhatsAppClick(service.title)}
                         >
                           <MessageCircle className="mr-2 h-4 w-4" />
@@ -219,7 +219,7 @@ const ServicesPage = () => {
                         </Button>
                         <Button 
                           variant="outline" 
-                          className="w-full border-[#F25C05] text-[#F25C05] hover:bg-[#F25C05] hover:text-white"
+                          className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                           asChild
                         >
                           <Link href={`/hizmetler/${service.id}`}>
@@ -238,7 +238,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Neden Biz Section */}
-      <section className="py-20 bg-[#F2F2F2]">
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -247,44 +247,44 @@ const ServicesPage = () => {
               transition={{ duration: 0.8 }}
               className="space-y-6"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                 Neden Hizmetlerimizi Tercih Etmelisiniz?
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-[#F25C05] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">40 Yıllık Deneyim</h3>
-                    <p className="text-[#4B4B4B]">Serigrafi sektöründe 40 yılı aşkın deneyimimizle en iyi hizmeti sunuyoruz.</p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">45 Yıllık Deneyim</h3>
+                    <p className="text-muted-foreground">Serigrafi sektöründe 45 yılı aşkın deneyimimizle en iyi hizmeti sunuyoruz.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-[#F25C05] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Uzman Ekip</h3>
-                    <p className="text-[#4B4B4B]">Deneyimli mühendislerimiz ve teknik personelimizle kaliteli hizmet garantisi.</p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">Uzman Ekip</h3>
+                    <p className="text-muted-foreground">Deneyimli mühendislerimiz ve teknik personelimizle kaliteli hizmet garantisi.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-[#F25C05] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Hızlı Müdahale</h3>
-                    <p className="text-[#4B4B4B]">Acil durumlarınızda hızlı müdahale ile üretiminizi kesintisiz sürdürün.</p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">Hızlı Müdahale</h3>
+                    <p className="text-muted-foreground">Acil durumlarınızda hızlı müdahale ile üretiminizi kesintisiz sürdürün.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-[#F25C05] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">Garantili Hizmet</h3>
-                    <p className="text-[#4B4B4B]">Tüm hizmetlerimiz garanti kapsamında, müşteri memnuniyeti odaklı çalışıyoruz.</p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">Garantili Hizmet</h3>
+                    <p className="text-muted-foreground">Tüm hizmetlerimiz garanti kapsamında, müşteri memnuniyeti odaklı çalışıyoruz.</p>
                   </div>
                 </div>
               </div>
@@ -296,7 +296,7 @@ const ServicesPage = () => {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="bg-gradient-to-br from-[#F25C05] to-[#F25C05]/80 rounded-2xl p-8 text-white">
+              <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 text-white">
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold">Hızlı İletişim</h3>
                   <div className="space-y-4">
@@ -310,7 +310,7 @@ const ServicesPage = () => {
                     </div>
                   </div>
                   <Button 
-                    className="w-full bg-white text-[#F25C05] hover:bg-white/90"
+                    className="w-full bg-white text-primary hover:bg-white/90"
                     onClick={() => {
                       const message = "Merhaba, hizmetleriniz hakkında bilgi almak istiyorum.";
                       const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
@@ -328,7 +328,7 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#F25C05]">
+      <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -340,7 +340,7 @@ const ServicesPage = () => {
               Hizmetlerimiz Hakkında Bilgi Alın
             </h2>
             <p className="text-xl text-white/90">
-              40 yıllık deneyimimizle size en uygun hizmet paketini sunalım.
+              45 yıllık deneyimimizle size en uygun hizmet paketini sunalım.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -354,7 +354,7 @@ const ServicesPage = () => {
               >
                 Teklif Al
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#F25C05]" asChild>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
                 <Link href="/iletisim">
                   İletişime Geç
                 </Link>
@@ -367,4 +367,4 @@ const ServicesPage = () => {
   );
 };
 
-export default ServicesPage; 
+export default ServicesPage;

@@ -13,8 +13,8 @@ const BlogPage = () => {
     {
       id: "1",
       title: "Serigrafi Baskı Teknolojisinin Gelişimi",
-      excerpt: "Serigrafi baskı teknolojisinin son 40 yıldaki gelişimi ve OkanGökhan'in bu süreçteki rolü hakkında detaylı bir analiz.",
-      content: "Serigrafi baskı teknolojisi, son 40 yılda büyük bir gelişim göstermiştir. Manuel baskı makinelerinden otomatik sistemlere kadar geçen süreçte, OkanGökhan Serigrafi Makineleri olarak bu gelişimin her aşamasında yer almış bulunmaktayız...",
+      excerpt: "Serigrafi baskı teknolojisinin son 45 yıldaki gelişimi ve OkanGökhan'in bu süreçteki rolü hakkında detaylı bir analiz.",
+      content: "Serigrafi baskı teknolojisi, son 45 yılda büyük bir gelişim göstermiştir. Manuel baskı makinelerinden otomatik sistemlere kadar geçen süreçte, OkanGökhan Serigrafi Makineleri olarak bu gelişimin her aşamasında yer almış bulunmaktayız...",
       author: "Okan Gökhan",
       date: "2024-01-15",
       category: "Teknoloji",
@@ -74,7 +74,7 @@ const BlogPage = () => {
       id: "6",
       title: "Serigrafi Sektöründe Kalite Standartları",
       excerpt: "Serigrafi sektöründe uygulanan kalite standartları ve OkanGökhan'in kalite yaklaşımı.",
-      content: "Serigrafi sektöründe kalite standartları, müşteri memnuniyeti ve ürün güvenilirliği açısından büyük önem taşır. OkanGökhan olarak, 40 yıllık deneyimimizle en yüksek kalite standartlarını uyguluyoruz...",
+      content: "Serigrafi sektöründe kalite standartları, müşteri memnuniyeti ve ürün güvenilirliği açısından büyük önem taşır. OkanGökhan olarak, 45 yıllık deneyimimizle en yüksek kalite standartlarını uyguluyoruz...",
       author: "Kalite Ekip",
       date: "2023-12-15",
       category: "Kalite",
@@ -101,9 +101,9 @@ const BlogPage = () => {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2]">
+    <div className="min-h-screen bg-muted">
       {/* Hero Section */}
-      <section className="py-20 bg-[#1A1A1A] text-white">
+      <section className="py-20 bg-foreground text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -114,8 +114,8 @@ const BlogPage = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Blog
             </h1>
-            <p className="text-xl text-[#F2F2F2] max-w-3xl mx-auto">
-              40 yıllık deneyimimizle serigrafi sektöründeki gelişmeleri, 
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              45 yıllık deneyimimizle serigrafi sektöründeki gelişmeleri, 
               teknolojik yenilikleri ve sektörel bilgileri paylaşıyoruz.
             </p>
           </motion.div>
@@ -131,7 +131,7 @@ const BlogPage = () => {
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className={selectedCategory === category ? "bg-[#F25C05] hover:bg-[#F25C05]/90" : ""}
+                className={selectedCategory === category ? "bg-primary hover:bg-primary/90" : ""}
               >
                 {category}
               </Button>
@@ -161,7 +161,7 @@ const BlogPage = () => {
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-4 left-4">
-                      <Badge className="bg-[#F25C05] hover:bg-[#F25C05]/90">
+                      <Badge className="bg-primary hover:bg-primary/90">
                         {post.category}
                       </Badge>
                     </div>
@@ -169,7 +169,7 @@ const BlogPage = () => {
 
                   {/* Blog İçeriği */}
                   <CardHeader>
-                    <div className="flex items-center space-x-4 text-sm text-[#4B4B4B] mb-3">
+                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
                       <div className="flex items-center space-x-1">
                         <Calendar className="w-4 h-4" />
                         <span>{new Date(post.date).toLocaleDateString('tr-TR')}</span>
@@ -179,13 +179,13 @@ const BlogPage = () => {
                         <span>{post.readTime}</span>
                       </div>
                     </div>
-                    <CardTitle className="text-xl font-semibold text-[#1A1A1A] line-clamp-2">
+                    <CardTitle className="text-xl font-semibold text-foreground line-clamp-2">
                       {post.title}
                     </CardTitle>
                   </CardHeader>
 
                   <CardContent>
-                    <CardDescription className="text-[#4B4B4B] mb-4 line-clamp-3">
+                    <CardDescription className="text-muted-foreground mb-4 line-clamp-3">
                       {post.excerpt}
                     </CardDescription>
 
@@ -199,14 +199,14 @@ const BlogPage = () => {
                     </div>
 
                     {/* Yazar */}
-                    <div className="flex items-center space-x-2 text-sm text-[#4B4B4B] mb-4">
+                    <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-4">
                       <User className="w-4 h-4" />
                       <span>{post.author}</span>
                     </div>
 
                     <Button 
                       variant="outline" 
-                      className="w-full border-[#F25C05] text-[#F25C05] hover:bg-[#F25C05] hover:text-white"
+                      className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                       asChild
                     >
                       <Link href={`/blog/${post.id}`}>
@@ -222,10 +222,10 @@ const BlogPage = () => {
 
           {filteredPosts.length === 0 && (
             <div className="text-center py-12">
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 Bu kategoride henüz yazı bulunmuyor
               </h3>
-              <p className="text-[#4B4B4B]">
+              <p className="text-muted-foreground">
                 Farklı bir kategori seçerek diğer yazılarımızı inceleyebilirsiniz.
               </p>
             </div>
@@ -234,7 +234,7 @@ const BlogPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#F25C05]">
+      <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -261,7 +261,7 @@ const BlogPage = () => {
               >
                 Teklif Al
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#F25C05]" asChild>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
                 <Link href="/iletisim">
                   İletişime Geç
                 </Link>
@@ -274,4 +274,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage; 
+export default BlogPage;
