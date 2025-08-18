@@ -131,10 +131,10 @@ const ContactPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               İletişim Bilgilerimiz
             </h2>
-            <p className="text-xl text-[#4B4B4B] max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Size en hızlı şekilde ulaşabilmeniz için tüm iletişim kanallarımız açık.
             </p>
           </motion.div>
@@ -149,10 +149,10 @@ const ContactPage = () => {
               >
                 <Card className="h-full text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <div className="w-16 h-16 bg-[#1A1A1A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <info.icon className="w-8 h-8 text-[#1A1A1A]" />
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <info.icon className="w-8 h-8 text-primary" />
                     </div>
-                    <CardTitle className="text-xl font-semibold text-[#1A1A1A]">
+                    <CardTitle className="text-xl font-semibold text-foreground">
                       {info.title}
                     </CardTitle>
                   </CardHeader>
@@ -160,18 +160,18 @@ const ContactPage = () => {
                     {info.link ? (
                       <a 
                         href={info.link}
-                        className="text-lg font-semibold text-[#1A1A1A] mb-2 hover:text-[#4B4B4B] transition-colors cursor-pointer block"
+                        className="text-lg font-semibold text-foreground mb-2 hover:text-muted-foreground transition-colors cursor-pointer block"
                         target={info.link.startsWith('https') ? '_blank' : '_self'}
                         rel={info.link.startsWith('https') ? 'noopener noreferrer' : undefined}
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <div className="text-lg font-semibold text-[#1A1A1A] mb-2">
+                      <div className="text-lg font-semibold text-foreground mb-2">
                         {info.value}
                       </div>
                     )}
-                    <CardDescription className="text-[#4B4B4B]">
+                    <CardDescription className="text-muted-foreground">
                       {info.description}
                     </CardDescription>
                   </CardContent>
@@ -183,7 +183,7 @@ const ContactPage = () => {
       </section>
 
       {/* İletişim Formu ve Harita */}
-      <section className="py-20 bg-[#F2F2F2]">
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* İletişim Formu */}
@@ -194,10 +194,10 @@ const ContactPage = () => {
             >
               <Card className="border-0 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-[#1A1A1A]">
+                  <CardTitle className="text-2xl font-bold text-foreground">
                     Mesaj Gönderin
                   </CardTitle>
-                  <CardDescription className="text-[#4B4B4B]">
+                  <CardDescription className="text-muted-foreground">
                     Size en uygun çözümü sunabilmemiz için formu doldurun.
                   </CardDescription>
                 </CardHeader>
@@ -208,13 +208,13 @@ const ContactPage = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       className="text-center py-8"
                     >
-                      <div className="w-16 h-16 bg-[#1A1A1A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <CheckCircle className="w-8 h-8 text-[#1A1A1A]" />
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle className="w-8 h-8 text-primary" />
                       </div>
-                      <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
                         Mesajınız Gönderildi!
                       </h3>
-                      <p className="text-[#4B4B4B]">
+                      <p className="text-muted-foreground">
                         En kısa sürede size dönüş yapacağız.
                       </p>
                     </motion.div>
@@ -222,7 +222,7 @@ const ContactPage = () => {
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
+                          <label className="block text-sm font-medium text-foreground mb-2">
                             Ad Soyad *
                           </label>
                           <Input
@@ -233,7 +233,7 @@ const ContactPage = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
+                          <label className="block text-sm font-medium text-foreground mb-2">
                             E-posta *
                           </label>
                           <Input
@@ -248,7 +248,7 @@ const ContactPage = () => {
 
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
+                          <label className="block text-sm font-medium text-foreground mb-2">
                             Telefon
                           </label>
                           <Input
@@ -258,7 +258,7 @@ const ContactPage = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
+                          <label className="block text-sm font-medium text-foreground mb-2">
                             Firma
                           </label>
                           <Input
@@ -270,7 +270,7 @@ const ContactPage = () => {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
+                        <label className="block text-sm font-medium text-foreground mb-2">
                           Konu *
                         </label>
                         <Input
@@ -282,7 +282,7 @@ const ContactPage = () => {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
+                        <label className="block text-sm font-medium text-foreground mb-2">
                           Hizmet Türü
                         </label>
                         <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
@@ -300,7 +300,7 @@ const ContactPage = () => {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
+                        <label className="block text-sm font-medium text-foreground mb-2">
                           Mesaj *
                         </label>
                         <Textarea
@@ -315,7 +315,7 @@ const ContactPage = () => {
                       <Button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="w-full bg-[#1A1A1A] hover:bg-[#1A1A1A]/90"
+                        className="w-full bg-primary hover:bg-primary/90"
                       >
                         {isSubmitting ? (
                           <>
@@ -343,10 +343,10 @@ const ContactPage = () => {
               className="space-y-6"
             >
               <div>
-                <h3 className="text-2xl font-bold text-[#1A1A1A] mb-4">
+                <h3 className="text-2xl font-bold text-foreground mb-4">
                   Konumumuz
                 </h3>
-                <p className="text-[#4B4B4B] mb-6">
+                <p className="text-muted-foreground mb-6">
                   Maltepe Mah. Akınsal San. Sit. D Blok No:37/38 Cevizlibağ/Zeytinburnu adresinde bulunan 
                   merkezimizi ziyaret edebilirsiniz.
                 </p>
@@ -370,17 +370,17 @@ const ContactPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Card className="border-0 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-lg font-semibold text-[#1A1A1A] flex items-center">
-                      <MessageSquare className="w-5 h-5 text-[#1A1A1A] mr-2" />
+                    <CardTitle className="text-lg font-semibold text-foreground flex items-center">
+                      <MessageSquare className="w-5 h-5 text-primary mr-2" />
                       WhatsApp
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-[#4B4B4B] mb-3">
+                    <p className="text-muted-foreground mb-3">
                       Hızlı iletişim için WhatsApp&apos;tan mesaj gönderin
                     </p>
                     <Button 
-                      className="w-full bg-[#1A1A1A] hover:bg-[#1A1A1A]/90"
+                      className="w-full bg-primary hover:bg-primary/90"
                       onClick={() => {
                         const message = "Merhaba, serigrafi makinesi hakkında bilgi almak istiyorum.";
                         const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
@@ -394,18 +394,18 @@ const ContactPage = () => {
 
                 <Card className="border-0 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-lg font-semibold text-[#1A1A1A] flex items-center">
-                      <Building className="w-5 h-5 text-[#1A1A1A] mr-2" />
+                    <CardTitle className="text-lg font-semibold text-foreground flex items-center">
+                      <Building className="w-5 h-5 text-primary mr-2" />
                       Ofis Ziyareti
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-[#4B4B4B] mb-3">
+                    <p className="text-muted-foreground mb-3">
                       Ürünlerimizi yerinde incelemek için randevu alın
                     </p>
                     <Button 
                       variant="outline" 
-                      className="w-full border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white"
+                      className="w-full border-primary text-primary hover:bg-primary hover:text-white"
                       onClick={() => {
                         const message = "Merhaba, ofis ziyareti için randevu almak istiyorum.";
                         const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
@@ -431,10 +431,10 @@ const ContactPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Sık Sorulan Sorular
             </h2>
-            <p className="text-xl text-[#4B4B4B] max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               İletişim sürecimiz hakkında merak edilen sorular.
             </p>
           </motion.div>
@@ -466,12 +466,12 @@ const ContactPage = () => {
               >
                 <Card className="border-0 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-lg font-semibold text-[#1A1A1A]">
+                    <CardTitle className="text-lg font-semibold text-foreground">
                       {faq.question}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-[#4B4B4B] text-base">
+                    <CardDescription className="text-muted-foreground text-base">
                       {faq.answer}
                     </CardDescription>
                   </CardContent>
@@ -483,7 +483,7 @@ const ContactPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#1A1A1A]">
+      <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -503,7 +503,7 @@ const ContactPage = () => {
                   Hemen Ara
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-black" asChild>
+              <Button size="lg" variant="outline" className="border-2 border-white bg-white/10 backdrop-blur-sm text-white font-semibold hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-lg" asChild>
                 <a href="mailto:dogukancetinkaya@okangokhan.com">
                   E-posta Gönder
                 </a>
@@ -522,10 +522,10 @@ const ContactPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               Sosyal Medyada Takip Edin
             </h2>
-            <p className="text-lg text-[#4B4B4B] mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Güncel projelerimizi, yeniliklerimizi ve sektör haberlerini sosyal medya hesaplarımızdan takip edebilirsiniz.
             </p>
             <div className="flex justify-center space-x-6">
@@ -536,7 +536,7 @@ const ContactPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="bg-[#1A1A1A]/10 p-4 rounded-full hover:bg-[#1A1A1A] hover:text-white transition-all duration-300 text-[#1A1A1A] group"
+                  className="bg-primary/10 p-4 rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-primary group"
                   aria-label={`${social.name} sayfamızı ziyaret edin`}
                 >
                   <social.icon className="h-6 w-6" />
