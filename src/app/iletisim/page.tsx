@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageSquare, Building } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageSquare, Building, Facebook, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -97,6 +97,13 @@ const ContactPage = () => {
       value: "Pazartesi - Cuma: 08:00 - 18:00",
       description: "Cumartesi: 09:00 - 14:00"
     }
+  ];
+
+  const socialLinks = [
+    { name: "Facebook", icon: Facebook, href: "https://facebook.com/okangokhan.serigrafi" },
+    { name: "Instagram", icon: Instagram, href: "https://instagram.com/okangokhan_serigrafi" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/okangokhan-serigrafi" },
+    { name: "YouTube", icon: Youtube, href: "https://youtube.com/@okangokhan-serigrafi" },
   ];
 
   const services = [
@@ -501,6 +508,40 @@ const ContactPage = () => {
                   E-posta Gönder
                 </a>
               </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Sosyal Medya */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-4">
+              Sosyal Medyada Takip Edin
+            </h2>
+            <p className="text-lg text-[#4B4B4B] mb-8 max-w-2xl mx-auto">
+              Güncel projelerimizi, yeniliklerimizi ve sektör haberlerini sosyal medya hesaplarımızdan takip edebilirsiniz.
+            </p>
+            <div className="flex justify-center space-x-6">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="bg-[#1A1A1A]/10 p-4 rounded-full hover:bg-[#1A1A1A] hover:text-white transition-all duration-300 text-[#1A1A1A] group"
+                  aria-label={`${social.name} sayfamızı ziyaret edin`}
+                >
+                  <social.icon className="h-6 w-6" />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
         </div>
