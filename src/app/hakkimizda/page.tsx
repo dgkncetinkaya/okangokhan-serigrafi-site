@@ -245,7 +245,7 @@ const AboutPage = () => {
               >
                 Teklif Al
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
+              <Button size="lg" variant="outline" className="border-2 border-white bg-white/10 backdrop-blur-sm text-white font-semibold hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-lg" asChild>
                 <Link href="/iletisim">
                   İletişime Geç
                 </Link>

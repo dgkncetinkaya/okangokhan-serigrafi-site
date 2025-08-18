@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 
 const Header = () => {
@@ -177,25 +177,27 @@ const Header = () => {
 					</div>
 
 					{/* Mobile Menu */}
-					<Sheet>
+					<Sheet open={isOpen} onOpenChange={setIsOpen}>
 						<SheetTrigger asChild>
 							<Button variant="ghost" size="icon" className="lg:hidden">
 								<Menu className="h-6 w-6" />
 							</Button>
 						</SheetTrigger>
-						<SheetContent side="right" className="w-[300px] sm:w-[400px]">
-							<nav className="flex flex-col space-y-4 mt-8">
+						<SheetContent side="right" className="w-[320px] sm:w-[400px] bg-gradient-to-br from-white via-gray-50 to-blue-50 backdrop-blur-xl border-l border-gray-200/50 shadow-2xl">
+							<SheetTitle className="sr-only">Menü</SheetTitle>
+							<div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none" />
+							<nav className="flex flex-col space-y-2 mt-12 px-6 relative z-10">
 								{menuItems.map((item) => (
 									<div key={item.name}>
 										{item.name === "Ürünlerimiz" ? (
 											<div>
 												<button
-													className="text-lg font-medium hover:text-primary transition-colors flex items-center w-full justify-between"
+													className="group w-full p-4 rounded-xl bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex items-center justify-between"
 													onClick={() => setIsProductDropdownOpen(!isProductDropdownOpen)}
 												>
-													{item.name}
+													<span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">{item.name}</span>
 													<ChevronDown 
-														className={`h-4 w-4 transition-transform duration-200 ${isProductDropdownOpen ? 'rotate-180' : ''}`} 
+														className={`h-5 w-5 text-gray-500 group-hover:text-primary transition-all duration-300 ${isProductDropdownOpen ? 'rotate-180' : ''}`} 
 													/>
 												</button>
 												<AnimatePresence>
@@ -207,7 +209,7 @@ const Header = () => {
 															transition={{ duration: 0.3 }}
 															className="overflow-hidden"
 														>
-															<div className="mt-2 ml-4 space-y-2">
+															<div className="mt-3 ml-2 space-y-1">
 																{productCategories.map((category, index) => (
 																	<motion.div
 																		key={category.name}
@@ -217,9 +219,10 @@ const Header = () => {
 																	>
 																		<Link
 																			href={category.href}
-																			className="block py-2 text-sm text-muted-foreground hover:text-primary transition-colors border-l-2 border-transparent hover:border-primary pl-4"
+																			className="group block py-3 px-4 mx-1 rounded-lg bg-white/40 backdrop-blur-sm border border-gray-100/50 hover:bg-primary/5 hover:border-primary/20 hover:shadow-md transition-all duration-200"
+																			onClick={() => setIsOpen(false)}
 																		>
-																			{category.name}
+																			<span className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">{category.name}</span>
 																		</Link>
 																	</motion.div>
 																))}
@@ -230,9 +233,10 @@ const Header = () => {
 																	className="pt-2"
 																>
 																	<Link
-																			href="/urunler"
-																			className="block py-2 px-4 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors text-center"
-																		>
+																		href="/urunler"
+																		className="block py-3 px-6 mx-1 bg-gradient-to-r from-primary to-primary/80 text-white text-sm font-semibold rounded-xl hover:from-primary/90 hover:to-primary/70 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
+																		onClick={() => setIsOpen(false)}
+																	>
 																			Tüm Ürünleri Gör
 																		</Link>
 																</motion.div>
@@ -242,12 +246,13 @@ const Header = () => {
 											</AnimatePresence>
 										</div>
 								) : (
-									<Link
-										href={item.href}
-										className="text-lg font-medium hover:text-primary transition-colors block"
-									>
-										{item.name}
-										</Link>
+														<Link
+															href={item.href}
+															className="group block p-4 rounded-xl bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+															onClick={() => setIsOpen(false)}
+														>
+															<span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">{item.name}</span>
+															</Link>
 								)}
 							</div>
 						))}

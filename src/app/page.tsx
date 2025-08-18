@@ -198,7 +198,11 @@ export default function Home() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" asChild>
+                <Button 
+                  variant="outline" 
+                  className="border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg" 
+                  asChild
+                >
                   <Link href="/iletisim">
                     İletişime Geç
                   </Link>
@@ -270,7 +274,12 @@ export default function Home() {
               >
                 Teklif Al
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white bg-white/10 backdrop-blur-sm text-white font-semibold hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-lg" 
+                asChild
+              >
                 <Link href="/iletisim">
                   İletişime Geç
                 </Link>

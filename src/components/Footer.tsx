@@ -115,24 +115,35 @@ const Footer = () => {
 					<div className="space-y-4">
 						<h4 className="text-lg font-semibold">İletişim</h4>
 						<div className="space-y-3">
-							<a href="https://maps.google.com/?q=OkanGökhan+Serigrafi+Makinaları+Maltepe+Mah.+Akınsal+San.+Sit.+D+Blok+No:37/38+Cevizlibağ/Zeytinburnu+İstanbul" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-white/80 transition-colors">
-							<MapPin className="h-5 w-5 text-white" />
-							<div>
-								<p className="text-sm text-white">
-									Maltepe Mah. Akınsal San. Sit.<br />
-									D Blok No:37/38<br />
-									Cevizlibağ/Zeytinburnu
-								</p>
-							</div>
-						</a>
-						<a href="tel:+905425094758" className="flex items-center space-x-3 hover:text-white/80 transition-colors">
-							<Phone className="h-5 w-5 text-white" />
-							<span className="text-sm text-white">+90 (542) 509 47 58</span>
-						</a>
-						<a href="mailto:dogukancetinkaya@okangokhan.com" className="flex items-center space-x-3 hover:text-white/80 transition-colors">
-							<Mail className="h-5 w-5 text-white" />
-							<span className="text-sm text-white">dogukancetinkaya@okangokhan.com</span>
-						</a>
+							<a 
+								href="https://maps.google.com/?q=OkanGökhan+Serigrafi+Makinaları+Maltepe+Mah.+Akınsal+San.+Sit.+D+Blok+No:37/38+Cevizlibağ/Zeytinburnu+İstanbul" 
+								target="_blank" 
+								rel="noopener noreferrer" 
+								className="flex items-start space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10"
+							>
+								<MapPin className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
+								<div>
+									<p className="text-sm text-white leading-relaxed">
+										Maltepe Mah. Akınsal San. Sit.<br />
+										D Blok No:37/38<br />
+										Cevizlibağ/Zeytinburnu
+									</p>
+								</div>
+							</a>
+							<a 
+								href="tel:+905425094758" 
+								className="flex items-center space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10"
+							>
+								<Phone className="h-5 w-5 text-white flex-shrink-0" />
+								<span className="text-sm text-white font-medium">+90 (542) 509 47 58</span>
+							</a>
+							<a 
+								href="mailto:dogukancetinkaya@okangokhan.com" 
+								className="flex items-center space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10"
+							>
+								<Mail className="h-5 w-5 text-white flex-shrink-0" />
+								<span className="text-sm text-white font-medium">dogukancetinkaya@okangokhan.com</span>
+							</a>
 							<div className="flex items-center space-x-3">
 								<Clock className="h-5 w-5 text-white" />
 								<div>
@@ -151,9 +162,14 @@ const Footer = () => {
 				<div className="bg-black/20 py-4">
 					<div className="container mx-auto px-4">
 						<div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-							<p className="text-sm text-white">
-								© {currentYear} OkanGökhan Serigrafi Makineleri. Tüm hakları saklıdır.
-							</p>
+							<a 
+								href="https://www.adnbilisim.com.tr/" 
+								target="_blank" 
+								rel="noopener noreferrer"
+								className="text-sm text-white hover:text-white/80 transition-colors"
+							>
+								© {currentYear} ADN Bilişim. Tüm hakları saklıdır.
+							</a>
 							<div className="flex space-x-6 text-sm text-white">
 								<Link href="/gizlilik" className="hover:text-white transition-colors">
 									Gizlilik Politikası

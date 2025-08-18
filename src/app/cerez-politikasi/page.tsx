@@ -138,11 +138,11 @@ const CookiePolicyPage = () => {
 										Çerez ayarlarınızı değiştirmek için tarayıcınızın yardım bölümüne bakabilir veya aşağıdaki bağlantıları kullanabilirsiniz:
 									</p>
 									<ul className="list-disc list-inside space-y-1 text-muted-foreground text-sm">
-										<li>Chrome: Ayarlar > Gizlilik ve güvenlik > Çerezler</li>
-										<li>Firefox: Ayarlar > Gizlilik ve Güvenlik > Çerezler</li>
-										<li>Safari: Tercihler > Gizlilik > Çerezler</li>
-										<li>Edge: Ayarlar > Çerezler ve site izinleri</li>
-									</ul>
+											<li>Chrome: Ayarlar &gt; Gizlilik ve güvenlik &gt; Çerezler</li>
+											<li>Firefox: Ayarlar &gt; Gizlilik ve Güvenlik &gt; Çerezler</li>
+											<li>Safari: Tercihler &gt; Gizlilik &gt; Çerezler</li>
+											<li>Edge: Ayarlar &gt; Çerezler ve site izinleri</li>
+										</ul>
 								</CardContent>
 							</Card>
 						</motion.div>

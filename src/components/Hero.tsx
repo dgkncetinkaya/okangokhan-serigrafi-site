@@ -1,217 +1,187 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, CheckCircle, MessageCircle } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
-	const features = [
-		"45+ Yıllık Deneyim",
-		"A Kalite Üretim",
-		"Teknik Destek",
-		"Hızlı Teslimat"
+	const [currentSlide, setCurrentSlide] = useState(0);
+
+	// Hero slider verileri - yeni serigrafi görselleri
+	const slides = [
+		{
+			id: 1,
+			backgroundImage: "/images/serigrafi-1.jpeg",
+			title: "Profesyonel Serigrafi",
+			subtitle: "Kaliteli Baskı Çözümleri",
+			description: "Modern serigrafi teknikleri ile yüksek kaliteli baskı hizmetleri sunuyoruz. Deneyimli ekibimizle her türlü baskı ihtiyacınızı karşılıyoruz.",
+			buttonText: "Ürünlerimizi İncele",
+			buttonLink: "/urunler"
+		},
+		{
+			id: 2,
+			backgroundImage: "/images/serigrafi-2.jpeg",
+			title: "Uzman Ekip",
+			subtitle: "40 Yıllık Deneyim",
+			description: "Serigrafi alanında uzman ekibimiz ve kaliteli malzemelerimizle size en iyi hizmeti sunmak için çalışıyoruz.",
+			buttonText: "Hakkımızda",
+			buttonLink: "/hakkimizda"
+		},
+		{
+			id: 3,
+			backgroundImage: "/images/serigrafi-3.jpeg",
+			title: "Gelişmiş Teknoloji",
+			subtitle: "Modern Ekipmanlar",
+			description: "En son teknoloji ekipmanlarımız ile hızlı ve kaliteli üretim yapıyoruz. Müşteri memnuniyeti bizim önceliğimizdir.",
+			buttonText: "İletişime Geç",
+			buttonLink: "/iletisim"
+		}
 	];
 
+	// Otomatik slayt geçişi
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentSlide((prev) => (prev + 1) % slides.length);
+		}, 6000); // 6 saniyede bir geçiş
+
+		return () => clearInterval(interval);
+	}, [slides.length]);
+
+	const nextSlide = () => {
+		setCurrentSlide((prev) => (prev + 1) % slides.length);
+	};
+
+	const prevSlide = () => {
+		setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+	};
+
+	const goToSlide = (index: number) => {
+		setCurrentSlide(index);
+	};
+
+	const currentSlideData = slides[currentSlide];
+
 	return (
-		<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-foreground/5 via-white to-foreground/5">
-			{/* Arka Plan Dekoratif Elementler */}
-			<div className="absolute inset-0 overflow-hidden">
+		<section className="relative min-h-screen overflow-hidden">
+			{/* Arka Plan Görseli */}
+			<AnimatePresence mode="wait">
 				<motion.div
-					initial={{ opacity: 0, scale: 0.8 }}
-					animate={{ opacity: 0.1, scale: 1 }}
-					transition={{ duration: 2 }}
-					className="absolute -top-40 -right-40 w-80 h-80 bg-primary rounded-full blur-3xl"
-				/>
-				<motion.div
-					initial={{ opacity: 0, scale: 0.8 }}
-					animate={{ opacity: 0.1, scale: 1 }}
-					transition={{ duration: 2, delay: 0.5 }}
-					className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/60 rounded-full blur-3xl"
-				/>
+					key={currentSlide}
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 1 }}
+					className="absolute inset-0"
+				>
+					<Image
+						src={currentSlideData.backgroundImage}
+						alt={currentSlideData.title}
+						fill
+						className="object-cover"
+						priority
+					/>
+					{/* Overlay */}
+					<div className="absolute inset-0 bg-black/40" />
+				</motion.div>
+			</AnimatePresence>
+
+			{/* Slayt Kontrol Butonları */}
+			<button
+				onClick={prevSlide}
+				className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
+			>
+				<ChevronLeft className="w-6 h-6" />
+			</button>
+			<button
+				onClick={nextSlide}
+				className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
+			>
+				<ChevronRight className="w-6 h-6" />
+			</button>
+
+			{/* Slayt İndikatörleri */}
+			<div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
+				{slides.map((_, index) => (
+					<button
+						key={index}
+						onClick={() => goToSlide(index)}
+						className={`w-3 h-3 rounded-full transition-all duration-300 ${
+							index === currentSlide 
+								? 'bg-white scale-125' 
+								: 'bg-white/50 hover:bg-white/80'
+						}`}
+					/>
+				))}
 			</div>
 
-			<div className="container mx-auto px-4 relative z-10">
-				<div className="grid lg:grid-cols-2 gap-12 items-center">
-					{/* Sol Taraf - İçerik */}
-					<motion.div
-						initial={{ opacity: 0, x: -50 }}
-						animate={{ opacity: 1, x: 0 }}
-						transition={{ duration: 0.8 }}
-						className="space-y-8"
-					>
-						{/* Badge */}
+			{/* Merkezi İçerik */}
+			<div className="absolute inset-0 flex items-center justify-center z-20">
+				<div className="container mx-auto px-4">
+					<AnimatePresence mode="wait">
 						<motion.div
-							initial={{ opacity: 0, y: 20 }}
+							key={currentSlide}
+							initial={{ opacity: 0, y: 50 }}
 							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6, delay: 0.2 }}
-							className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium"
+							exit={{ opacity: 0, y: -50 }}
+							transition={{ duration: 0.8 }}
+							className="text-center text-white max-w-4xl mx-auto"
 						>
-							<CheckCircle className="w-4 h-4 mr-2" />
-							Serigrafi Piyasasında 1 Numara
-						</motion.div>
-
-						{/* Ana Başlık */}
-						<motion.h1
-							initial={{ opacity: 0, y: 30 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.8, delay: 0.3 }}
-							className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
-						>
-							Kaliteli{" "}
-							<span className="text-primary">Serigrafi</span>{" "}
-							Makineleri
-						</motion.h1>
-
-						{/* Alt Başlık */}
-						<motion.p
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.8, delay: 0.4 }}
-							className="text-xl text-muted-foreground leading-relaxed"
-						>
-							45 yılı aşkın deneyimimizle, serigrafi sektörünün ihtiyaçlarını 
-							karşılayan A kalite, dayanıklı ve anlaşılır makineler üretiyoruz.
-						</motion.p>
-
-						{/* Özellikler */}
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.8, delay: 0.5 }}
-							className="grid grid-cols-2 gap-4"
-						>
-							{features.map((feature, index) => (
-								<motion.div
-									key={feature}
-									initial={{ opacity: 0, x: -20 }}
-									animate={{ opacity: 1, x: 0 }}
-									transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-									className="flex items-center space-x-2"
-								>
-									<CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-									<span className="text-foreground font-medium">{feature}</span>
-								</motion.div>
-							))}
-						</motion.div>
-
-						{/* CTA Butonları */}
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.8, delay: 0.7 }}
-							className="flex flex-col sm:flex-row gap-4"
-						>
-							<Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3" asChild>
-								<Link href="/urunler">
-									Ürünlerimizi İncele
-									<ArrowRight className="ml-2 h-5 w-5" />
-								</Link>
-							</Button>
-							<Button 
-								size="lg" 
-								variant="outline" 
-								className="px-8 py-3"
-								onClick={() => {
-									const message = "Merhaba, serigrafi makinesi hakkında bilgi almak istiyorum.";
-									const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
-									window.open(whatsappUrl, '_blank');
-								}}
+							{/* Ana Başlık */}
+							<motion.h1
+								initial={{ opacity: 0, y: 30 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: 0.2 }}
+								className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
 							>
-								<MessageCircle className="mr-2 h-5 w-5" />
-								Teklif Al
-							</Button>
-						</motion.div>
+								{currentSlideData.title}
+							</motion.h1>
 
-						{/* İstatistikler */}
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.8, delay: 0.8 }}
-							className="grid grid-cols-3 gap-8 pt-8 border-t border-input"
-						>
-							<div className="text-center">
-								<div className="text-3xl font-bold text-primary">1000+</div>
-								<div className="text-sm text-muted-foreground">Mutlu Müşteri</div>
-							</div>
-							<div className="text-center">
-							<div className="text-3xl font-bold text-primary">45+</div>
-							<div className="text-sm text-muted-foreground">Yıllık Deneyim</div>
-						</div>
-							<div className="text-center">
-								<div className="text-3xl font-bold text-primary">24/7</div>
-								<div className="text-sm text-muted-foreground">Teknik Destek</div>
-							</div>
-						</motion.div>
-					</motion.div>
+							{/* Alt Başlık */}
+							<motion.p
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: 0.4 }}
+								className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed"
+							>
+								{currentSlideData.subtitle}
+							</motion.p>
 
-					{/* Sağ Taraf - Serigrafi Görseli */}
-					<motion.div
-						initial={{ opacity: 0, x: 50 }}
-						animate={{ opacity: 1, x: 0 }}
-						transition={{ duration: 0.8, delay: 0.3 }}
-						className="relative"
-					>
-						<motion.div
-							initial={{ scale: 0.8, opacity: 0 }}
-							animate={{ scale: 1, opacity: 1 }}
-							transition={{ duration: 1, delay: 0.5 }}
-							className="relative z-20"
-						>
-							<div className="relative overflow-hidden rounded-2xl shadow-2xl">
-								<Image
-									src="/images/hero-serigrafi.jpg"
-									alt="OkanGökhan Serigrafi Makineleri - Modern Baskı Süreci"
-									width={600}
-									height={400}
-									className="w-full h-auto object-cover"
-									priority
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-								<div className="absolute bottom-6 left-6 text-white">
-									<h3 className="text-xl font-semibold mb-2">Modern Serigrafi Süreci</h3>
-									<p className="text-white/90">Profesyonel baskı çözümleri</p>
-								</div>
-							</div>
-						</motion.div>
+							{/* Açıklama */}
+							<motion.p
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: 0.6 }}
+								className="text-lg mb-10 text-white/80 max-w-2xl mx-auto"
+							>
+								{currentSlideData.description}
+							</motion.p>
 
-						{/* Dekoratif Elementler */}
-						<motion.div
-							initial={{ rotate: 0 }}
-							animate={{ rotate: 360 }}
-							transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-							className="absolute -top-4 -right-4 w-24 h-24 border-4 border-primary/20 rounded-full z-10"
-						/>
-						<motion.div
-							initial={{ rotate: 0 }}
-							animate={{ rotate: -360 }}
-							transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-							className="absolute -bottom-4 -left-4 w-16 h-16 border-4 border-primary/30 rounded-full z-10"
-						/>
-					</motion.div>
+							{/* CTA Butonu */}
+							<motion.div
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: 0.8 }}
+							>
+								<Button 
+									size="lg" 
+									className="bg-white text-black hover:bg-white/90 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105"
+									asChild
+								>
+									<Link href={currentSlideData.buttonLink}>
+										{currentSlideData.buttonText}
+										<ArrowRight className="ml-2 h-5 w-5" />
+									</Link>
+								</Button>
+							</motion.div>
+						</motion.div>
+					</AnimatePresence>
 				</div>
 			</div>
 
-			{/* Scroll İndikatörü */}
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 1, delay: 1.5 }}
-				className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-			>
-				<motion.div
-					animate={{ y: [0, 10, 0] }}
-					transition={{ duration: 2, repeat: Infinity }}
-					className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center"
-				>
-					<motion.div
-						animate={{ y: [0, 12, 0] }}
-						transition={{ duration: 2, repeat: Infinity }}
-						className="w-1 h-3 bg-muted-foreground rounded-full mt-2"
-					/>
-				</motion.div>
-			</motion.div>
+
 		</section>
 	);
 };
