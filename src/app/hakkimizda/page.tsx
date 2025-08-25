@@ -15,8 +15,8 @@ const AboutPage = () => {
     },
     {
       year: "1990",
-      title: "İlk Üretim",
-      description: "İlk serigrafi makinesi üretimi gerçekleştirildi"
+      title: "İlk İhracat",
+      description: "İlk serigrafi makinesi ihracatı gerçekleştirildi"
     },
     {
       year: "2000",

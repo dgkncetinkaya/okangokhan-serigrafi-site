@@ -38,9 +38,9 @@ const ProductCard = ({
 			whileHover={{ y: -5 }}
 			className="group"
 		>
-			<Card className="h-full overflow-hidden border-0 transition-all duration-500 rounded-3xl hover:shadow-lg hover:shadow-gray-200/50 flex flex-col bg-secondary">
+			<Card className="h-full overflow-hidden border-0 transition-all duration-500 rounded-3xl hover:shadow-lg hover:shadow-gray-200/50 flex flex-col product-card-bg">
 				{/* Ürün Görseli - Tıklanabilir */}
-				<div className="relative rounded-t-3xl overflow-hidden bg-secondary">
+				<div className="relative rounded-t-3xl overflow-hidden product-card-bg">
 					<Link href={`/urunler/${id}`} className="block">
 						<motion.div
 							whileHover={{ scale: 1.02 }}
@@ -65,7 +65,7 @@ const ProductCard = ({
 
 				<div className="flex-1 flex flex-col">
 					{/* Ürün Bilgileri */}
-					<CardHeader className="pb-2 px-4 pt-3 bg-secondary">
+					<CardHeader className="pb-2 px-4 pt-3 product-card-bg">
 						<div className="flex-1">
 							{/* Ürün İsmi - Tıklanabilir */}
 							<Link href={`/urunler/${id}`}>
@@ -80,7 +80,7 @@ const ProductCard = ({
 					</CardHeader>
 
 					{/* Özellikler */}
-					<CardContent className="pb-2 px-4 bg-secondary">
+					<CardContent className="pb-2 px-4 product-card-bg">
 						<div className="space-y-1.5">
 							{features.slice(0, 3).map((feature, index) => (
 								<motion.div
@@ -99,7 +99,7 @@ const ProductCard = ({
 				</div>
 
 				{/* Footer */}
-				<CardFooter className="pt-0 px-4 pb-4 mt-auto bg-secondary">
+				<CardFooter className="pt-0 px-4 pb-4 mt-auto product-card-bg">
 					<div className="w-full space-y-2">
 						<Button 
 							className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md" 
@@ -124,4 +124,4 @@ const ProductCard = ({
 	);
 };
 
-export default ProductCard; 
+export default ProductCard;

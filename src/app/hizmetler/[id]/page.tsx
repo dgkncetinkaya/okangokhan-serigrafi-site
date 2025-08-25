@@ -7,11 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Phone, MessageCircle, CheckCircle, Clock, Users, Award, Shield, Wrench, Truck, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { use } from "react";
 
 interface ServiceDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const services = [
@@ -198,7 +199,8 @@ const services = [
 ];
 
 export default function ServiceDetailPage({ params }: ServiceDetailPageProps) {
-  const service = services.find(s => s.id === params.id);
+  const { id } = use(params);
+  const service = services.find(s => s.id === id);
 
   if (!service) {
     notFound();
