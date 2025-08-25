@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, CheckCircle, Users, Award, Clock, Shield } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Örnek ürün verileri
 const sampleProducts = [
@@ -44,30 +45,32 @@ const sampleProducts = [
   },
 ];
 
-const features = [
-  {
-    icon: Award,
-    title: "Kaliteli Üretim",
-    description: "A kalite, dayanıklı ve anlaşılır ürünler ile en yüksek kalite standartlarında üretim"
-  },
-  {
-    icon: Users,
-    title: "Deneyimli Ekip",
-    description: "45+ yıllık deneyime sahip uzman mühendislik ekibi"
-  },
-  {
-    icon: Clock,
-    title: "Hızlı Teslimat",
-    description: "Anında Stok Teslim"
-  },
-  {
-    icon: Shield,
-    title: "Garanti",
-    description: "Tüm ürünlerimiz 2 yıl garanti kapsamında"
-  }
-];
-
 export default function Home() {
+  const { translations } = useLanguage();
+
+  const features = [
+    {
+      icon: Award,
+      title: translations.home.qualityProduction,
+      description: translations.home.qualityProductionDesc
+    },
+    {
+      icon: Users,
+      title: translations.home.experiencedTeam,
+      description: translations.home.experiencedTeamDesc
+    },
+    {
+      icon: Clock,
+      title: translations.home.fastDelivery,
+      description: translations.home.fastDeliveryDesc
+    },
+    {
+      icon: Shield,
+      title: translations.home.warranty,
+      description: translations.home.warrantyDesc
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -83,11 +86,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Neden OkanGökhan?
+              {translations.home.whyTitle}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              45 yılı aşkın deneyimimizle serigrafi sektörünün güvenilir ortağı olarak 
-              kaliteli ve yenilikçi çözümler sunuyoruz.
+              {translations.home.whySubtitle}
             </p>
           </motion.div>
 
@@ -130,11 +132,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Öne Çıkan Ürünlerimiz
+              {translations.home.featuredTitle}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Her ihtiyaca uygun serigrafi makineleri ve ekipmanları ile 
-              üretiminizi bir üst seviyeye taşıyın.
+              {translations.home.featuredSubtitle}
             </p>
           </motion.div>
 
@@ -159,7 +160,7 @@ export default function Home() {
           >
             <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
               <Link href="/urunler">
-                Tüm Ürünleri Gör
+                {translations.home.viewAllProducts}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -178,23 +179,18 @@ export default function Home() {
               className="space-y-6"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                OkanGökhan Serigrafi Makineleri
+                {translations.home.aboutTitle}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                1980 yılında İstanbul&apos;da kurulan firmamız, serigrafi baskı makinaları, kurutma rafları, 
-                serigrafi kalıpları ve boyalarını yüksek kalitede üretmek Türkiye ve Dünya piyasasına 
-                pazarlamak üzerine faaliyet göstermektedir.
+                {translations.home.aboutText1}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                45 yıllık tecrübesi ve deneyimleri ile serigraf piyasasında A kalite, dayanıklı, 
-                gayet kolay ve anlaşılır ürünleri, bünyesinde barındırdığı deneyimli ve uzman 
-                çalışma arkadaşlarıyla serigraf piyasasında daima 1 numara, en çok tavsiye edilen 
-                ve sevilen bir firma olmuştur.
+                {translations.home.aboutText2}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild>
                   <Link href="/hakkimizda">
-                    Daha Fazla Bilgi
+                    {translations.home.moreInfo}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -204,7 +200,7 @@ export default function Home() {
                   asChild
                 >
                   <Link href="/iletisim">
-                    İletişime Geç
+                    {translations.home.getInTouch}
                   </Link>
                 </Button>
               </div>
@@ -223,8 +219,8 @@ export default function Home() {
                       <CheckCircle className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold">45+ Yıllık Deneyim</h3>
-                      <p className="text-white/90">Serigrafi sektöründe lider</p>
+                      <h3 className="text-xl font-semibold">{translations.home.experience}</h3>
+                      <p className="text-white/90">{translations.home.experienceDesc}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4">
@@ -232,8 +228,8 @@ export default function Home() {
                       <Users className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold">1000+ Mutlu Müşteri</h3>
-                      <p className="text-white/90">Türkiye ve yurtdışında</p>
+                      <h3 className="text-xl font-semibold">{translations.home.customers}</h3>
+                      <p className="text-white/90">{translations.home.customersDesc}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4">
@@ -241,8 +237,8 @@ export default function Home() {
                       <Award className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold">A Kalite Üretim</h3>
-                      <p className="text-white/90">En yüksek standartlarda</p>
+                      <h3 className="text-xl font-semibold">{translations.home.quality}</h3>
+                      <p className="text-white/90">{translations.home.qualityDesc}</p>
                     </div>
                   </div>
                 </div>
@@ -262,17 +258,17 @@ export default function Home() {
             className="max-w-3xl mx-auto space-y-6"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Size Özel Serigrafi Çözümleri
+              {translations.home.ctaTitle}
             </h2>
             <p className="text-xl text-white/90">
-              45 yıllık deneyimimizle ihtiyaçlarınıza uygun en iyi serigrafi makinelerini sunalım.
+              {translations.home.ctaSubtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
                 variant="secondary"
               >
-                Teklif Al
+                {translations.home.getQuote}
               </Button>
               <Button 
                 size="lg" 
@@ -281,7 +277,7 @@ export default function Home() {
                 asChild
               >
                 <Link href="/iletisim">
-                  İletişime Geç
+                  {translations.home.contact}
                 </Link>
               </Button>
             </div>

@@ -8,18 +8,21 @@ import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "@/components/LanguageToggle";
 
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
+	const { translations } = useLanguage();
 
 	const menuItems = [
-		{ name: "Ana Sayfa", href: "/" },
-		{ name: "Ürünlerimiz", href: "/urunler" },
-		{ name: "Hizmetlerimiz", href: "/hizmetler" },
-		{ name: "Hakkımızda", href: "/hakkimizda" },
-		{ name: "Blog", href: "/blog" },
-		{ name: "İletişim", href: "/iletisim" },
+		{ name: translations.header.home, href: "/" },
+		{ name: translations.header.products, href: "/urunler" },
+		{ name: translations.header.services, href: "/hizmetler" },
+		{ name: translations.header.about, href: "/hakkimizda" },
+		{ name: translations.header.blog, href: "/blog" },
+		{ name: translations.header.contact, href: "/iletisim" },
 	];
 
 	const productCategories = [
@@ -47,7 +50,8 @@ const Header = () => {
 					</a>
 				</div>
 					<div className="hidden md:flex items-center space-x-4">
-						<span>Pazartesi - Cuma: 08:00 - 18:00</span>
+						<span>{translations.header.workingHours}</span>
+						<LanguageToggle />
 					</div>
 				</div>
 			</div>
@@ -121,8 +125,8 @@ const Header = () => {
 																		{category.name}
 																	</div>
 																	<div className="text-xs text-muted-foreground mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-																		Kategoriye git
-																	</div>
+																				{translations.header.goToCategory}
+																			</div>
 																</Link>
 															</motion.div>
 														))}
@@ -140,7 +144,7 @@ const Header = () => {
 															className="flex items-center justify-center w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors duration-200 font-medium"
 															onClick={() => setIsProductDropdownOpen(false)}
 														>
-															Tüm Ürünleri Gör
+															{translations.header.viewAllProducts}
 														</Link>
 													</motion.div>
 												</motion.div>
@@ -162,18 +166,18 @@ const Header = () => {
 					{/* CTA Button */}
 					<div className="hidden md:flex items-center space-x-4">
 						<Button 
-							variant="outline" 
-							onClick={() => {
-								const message = "Merhaba, serigrafi makinesi hakkında bilgi almak istiyorum.";
-								const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
-								window.open(whatsappUrl, '_blank');
-							}}
-						>
-							Teklif Al
-						</Button>
+						variant="outline" 
+						onClick={() => {
+							const message = translations.header.whatsappMessage;
+							const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
+							window.open(whatsappUrl, '_blank');
+						}}
+					>
+						{translations.header.getQuote}
+					</Button>
 						<Button asChild>
-							<Link href="/iletisim">İletişim</Link>
-						</Button>
+						<Link href="/iletisim">{translations.header.contact}</Link>
+					</Button>
 					</div>
 
 					{/* Mobile Menu */}
@@ -237,7 +241,7 @@ const Header = () => {
 																		className="block py-3 px-6 mx-1 bg-gradient-to-r from-primary to-primary/80 text-white text-sm font-semibold rounded-xl hover:from-primary/90 hover:to-primary/70 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
 																		onClick={() => setIsOpen(false)}
 																	>
-																			Tüm Ürünleri Gör
+																			{translations.header.viewAllProducts}
 																		</Link>
 																</motion.div>
 															</div>

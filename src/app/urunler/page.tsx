@@ -11,8 +11,10 @@ import { Search, ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductsPageContent = () => {
+  const { translations } = useLanguage();
   const searchParams = useSearchParams();
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,13 +40,13 @@ const ProductsPageContent = () => {
   };
 
   const categories = [
-    { id: "all", name: "Tüm Kategoriler" },
-    { id: "baski-makineleri", name: "Baskı Makineleri" },
-    { id: "kurutma-raflari", name: "Kurutma Rafları" },
-    { id: "serigrafi-boyalari", name: "Serigrafi Boyaları" },
-    { id: "baski-kaliplari", name: "Baskı Kalıpları" },
-    { id: "yardimci-malzemeler", name: "Serigrafi Yardımcı Malzemeleri" },
-    { id: "yedek-parcalar", name: "Yedek Parçalar" }
+    { id: "all", name: translations.products.allCategories },
+    { id: "baski-makineleri", name: translations.products.printingMachines },
+    { id: "kurutma-raflari", name: translations.products.dryingRacks },
+    { id: "serigrafi-boyalari", name: translations.products.screenPrintingPaints },
+    { id: "baski-kaliplari", name: translations.products.printingStencils },
+    { id: "yardimci-malzemeler", name: translations.products.auxiliaryMaterials },
+    { id: "yedek-parcalar", name: translations.products.spareParts }
   ];
 
   const products = [
@@ -560,10 +562,10 @@ const ProductsPageContent = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Ürünlerimiz
+              {translations.products.title}
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              45 yıllık deneyimimizle ürettiğimiz kaliteli serigrafi makineleri ve ekipmanları
+              {translations.products.subtitle}
             </p>
           </motion.div>
         </div>
@@ -592,7 +594,7 @@ const ProductsPageContent = () => {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
-                  placeholder="Ürün ara..."
+                  placeholder={translations.products.searchPlaceholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 w-full sm:w-64"
@@ -609,8 +611,8 @@ const ProductsPageContent = () => {
         <div className="container mx-auto px-4">
           {sortedProducts.length === 0 ? (
             <div className="text-center py-12">
-              <h3 className="text-xl font-semibold text-foreground mb-2">Ürün bulunamadı</h3>
-              <p className="text-muted-foreground">Arama kriterlerinize uygun ürün bulunamadı.</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{translations.products.noProductsFound}</h3>
+              <p className="text-muted-foreground">{translations.products.noProductsMessage}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -693,14 +695,14 @@ const ProductsPageContent = () => {
                           onClick={() => handleWhatsAppClick(product.name)}
                         >
                           <MessageCircle className="mr-2 h-4 w-4" />
-                          Teklif Al
+                          {translations.products.getQuote}
                         </Button>
                         <Button 
                           className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md" 
                           asChild
                         >
                           <Link href={`/urunler/${product.id}`}>
-                            Detayları Gör
+                            {translations.products.viewDetails}
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Link>
                         </Button>
