@@ -140,3 +140,234 @@
 .product-card-bg {
 	background-color: #E4E4E4 !important;
 }
+
+/* Mobil optimizasyonları */
+@media (max-width: 768px) {
+  /* Touch-friendly minimum sizes */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Mobil için daha büyük tap targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Mobil typography optimizasyonları */
+  h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  
+  /* Mobil spacing optimizasyonları */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Mobil scroll optimizasyonları */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mobil form optimizasyonları */
+  input, textarea, select {
+    font-size: 16px; /* iOS zoom önleme */
+  }
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive grid utilities */
+@media (max-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Mobil tablo kaydırma */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+  
+  table {
+    min-width: 600px;
+    font-size: 14px;
+  }
+  
+  th, td {
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Responsive typography with clamp() */
+.text-clamp-sm {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.text-clamp-base {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.text-clamp-lg {
+  font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+.text-clamp-xl {
+  font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+}
+
+.text-clamp-2xl {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+}
+
+.text-clamp-3xl {
+  font-size: clamp(1.5rem, 5vw, 1.875rem);
+}
+
+.text-clamp-4xl {
+  font-size: clamp(1.875rem, 6vw, 2.25rem);
+}
+
+.text-clamp-5xl {
+  font-size: clamp(2.25rem, 7vw, 3rem);
+}
+
+.text-clamp-6xl {
+  font-size: clamp(2.5rem, 8vw, 3.75rem);
+}
+
+/* Heading responsive classes */
+.heading-clamp-sm {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  line-height: 1.3;
+}
+
+.heading-clamp-md {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  line-height: 1.25;
+}
+
+.heading-clamp-lg {
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.heading-clamp-xl {
+  font-size: clamp(2.5rem, 7vw, 3rem);
+  line-height: 1.15;
+}
+
+.heading-clamp-2xl {
+  font-size: clamp(3rem, 8vw, 4rem);
+  line-height: 1.1;
+}
+
+/* Mobile-first responsive breakpoints */
+@media (max-width: 480px) {
+  .text-responsive {
+    font-size: 0.875rem;
+  }
+  
+  .heading-responsive {
+    font-size: 1.5rem;
+  }
+  
+  .spacing-responsive {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .text-responsive {
+    font-size: 1rem;
+  }
+  
+  .heading-responsive {
+    font-size: 1.75rem;
+  }
+  
+  .spacing-responsive {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .text-responsive {
+    font-size: 1.125rem;
+  }
+  
+  .heading-responsive {
+    font-size: 2rem;
+  }
+  
+  .spacing-responsive {
+    padding: 1.5rem;
+  }
+}

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MobileCTA from "@/components/MobileCTA";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geistSans = Geist({
@@ -21,6 +22,21 @@ export const metadata: Metadata = {
   description: "Türkiye'nin önde gelen serigrafi makinesi üreticisi. Manuel ve otomatik serigrafi makineleri, aksesuarlar ve teknik destek.",
   keywords: "serigrafi makinesi, serigrafi ekipmanları, baskı makinesi, otomatik serigrafi, manuel serigrafi",
   authors: [{ name: "OkanGökhan Serigrafi Makineleri" }],
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "any", type: "image/png" }
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "OkanGökhan Serigrafi Makineleri",
     description: "Kaliteli serigrafi ekipmanları ve makineleri",
@@ -40,11 +56,12 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <Header />
-          <main className="flex-1">
+          <main className="flex-1 pb-14 md:pb-0">
             {children}
           </main>
           <Footer />
           <WhatsAppButton />
+          <MobileCTA />
         </LanguageProvider>
       </body>
     </html>

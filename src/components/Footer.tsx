@@ -3,11 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear();
+	const [openSections, setOpenSections] = useState<{[key: string]: boolean}>({});
+
+	const toggleSection = (section: string) => {
+		setOpenSections(prev => ({
+			...prev,
+			[section]: !prev[section]
+		}));
+	};
 
 	const quickLinks = [
 		{ name: "Ana Sayfa", href: "/" },
@@ -37,8 +46,8 @@ const Footer = () => {
 	return (
 		<footer className="bg-foreground text-white">
 			{/* Ana Footer İçeriği */}
-			<div className="container mx-auto px-4 py-8">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			<div className="container mx-auto px-4 py-6 md:py-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
 					{/* Şirket Bilgileri */}
 					<div className="space-y-4">
 						<div className="flex items-center space-x-3">
@@ -78,14 +87,24 @@ const Footer = () => {
 					</div>
 
 					{/* Hızlı Linkler */}
-					<div className="space-y-4">
-						<h4 className="text-lg font-semibold">Hızlı Linkler</h4>
-						<ul className="space-y-2">
+					<div className="space-y-4 md:block">
+						{/* Mobile Collapsible Header */}
+						<button 
+							onClick={() => toggleSection('quickLinks')}
+							className="md:hidden w-full flex items-center justify-between text-lg font-semibold py-2 touch-manipulation"
+						>
+							Hızlı Linkler
+							<ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openSections.quickLinks ? 'rotate-180' : ''}`} />
+						</button>
+						{/* Desktop Header */}
+						<h4 className="hidden md:block text-lg font-semibold">Hızlı Linkler</h4>
+						
+						<ul className={`space-y-2 md:block ${openSections.quickLinks ? 'block' : 'hidden md:block'}`}>
 							{quickLinks.map((link) => (
 								<li key={link.name}>
 									<Link
 										href={link.href}
-										className="text-white hover:text-white/80 transition-colors text-sm"
+										className="text-white hover:text-white/80 transition-colors text-sm md:text-base py-1 block touch-manipulation"
 									>
 										{link.name}
 										</Link>
@@ -95,14 +114,24 @@ const Footer = () => {
 					</div>
 
 					{/* Ürünler */}
-					<div className="space-y-4">
-						<h4 className="text-lg font-semibold">Ürünler</h4>
-						<ul className="space-y-2">
+					<div className="space-y-4 md:block">
+						{/* Mobile Collapsible Header */}
+						<button 
+							onClick={() => toggleSection('products')}
+							className="md:hidden w-full flex items-center justify-between text-lg font-semibold py-2 touch-manipulation"
+						>
+							Ürünler
+							<ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openSections.products ? 'rotate-180' : ''}`} />
+						</button>
+						{/* Desktop Header */}
+						<h4 className="hidden md:block text-lg font-semibold">Ürünler</h4>
+						
+						<ul className={`space-y-2 md:block ${openSections.products ? 'block' : 'hidden md:block'}`}>
 							{productLinks.map((link) => (
 								<li key={link.name}>
 									<Link
 										href={link.href}
-										className="text-white hover:text-white/80 transition-colors text-sm"
+										className="text-white hover:text-white/80 transition-colors text-sm md:text-base py-1 block touch-manipulation"
 									>
 										{link.name}
 										</Link>
@@ -112,18 +141,27 @@ const Footer = () => {
 					</div>
 
 					{/* İletişim Bilgileri */}
-					<div className="space-y-4">
-						<h4 className="text-lg font-semibold">İletişim</h4>
-						<div className="space-y-3">
+					<div className="space-y-4 md:block">
+						{/* Mobile Collapsible Header */}
+						<button 
+							onClick={() => toggleSection('contact')}
+							className="md:hidden w-full flex items-center justify-between text-lg font-semibold py-2 touch-manipulation"
+						>
+							İletişim
+							<ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openSections.contact ? 'rotate-180' : ''}`} />
+						</button>
+						{/* Desktop Header */}
+						<h4 className="hidden md:block text-lg font-semibold">İletişim</h4>
+						<div className={`space-y-3 md:block ${openSections.contact ? 'block' : 'hidden md:block'}`}>
 							<a 
 								href="https://maps.google.com/?q=OkanGökhan+Serigrafi+Makinaları+Maltepe+Mah.+Akınsal+San.+Sit.+D+Blok+No:37/38+Cevizlibağ/Zeytinburnu+İstanbul" 
 								target="_blank" 
 								rel="noopener noreferrer" 
-								className="flex items-start space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10"
+								className="flex items-start space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10 touch-manipulation"
 							>
-								<MapPin className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
+								<MapPin className="h-4 w-4 md:h-5 md:w-5 text-white mt-1 flex-shrink-0" />
 								<div>
-									<p className="text-sm text-white leading-relaxed">
+									<p className="text-xs md:text-sm text-white leading-relaxed">
 										Maltepe Mah. Akınsal San. Sit.<br />
 										D Blok No:37/38<br />
 										Cevizlibağ/Zeytinburnu
@@ -132,22 +170,22 @@ const Footer = () => {
 							</a>
 							<a 
 								href="tel:+905425094758" 
-								className="flex items-center space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10"
+								className="flex items-center space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10 touch-manipulation"
 							>
-								<Phone className="h-5 w-5 text-white flex-shrink-0" />
-								<span className="text-sm text-white font-medium">+90 (542) 509 47 58</span>
+								<Phone className="h-4 w-4 md:h-5 md:w-5 text-white flex-shrink-0" />
+								<span className="text-xs md:text-sm text-white font-medium">+90 (542) 509 47 58</span>
 							</a>
 							<a 
 								href="mailto:dogukancetinkaya@okangokhan.com" 
-								className="flex items-center space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10"
+								className="flex items-center space-x-3 text-white hover:text-white/80 transition-colors group p-2 rounded-lg hover:bg-white/10 touch-manipulation"
 							>
-								<Mail className="h-5 w-5 text-white flex-shrink-0" />
-								<span className="text-sm text-white font-medium">dogukancetinkaya@okangokhan.com</span>
+								<Mail className="h-4 w-4 md:h-5 md:w-5 text-white flex-shrink-0" />
+								<span className="text-xs md:text-sm text-white font-medium break-all">dogukancetinkaya@okangokhan.com</span>
 							</a>
-							<div className="flex items-center space-x-3">
-								<Clock className="h-5 w-5 text-white" />
+							<div className="flex items-start space-x-3">
+								<Clock className="h-4 w-4 md:h-5 md:w-5 text-white mt-1" />
 								<div>
-									<p className="text-sm text-white">
+									<p className="text-xs md:text-sm text-white leading-relaxed">
 										Pazartesi - Cuma: 08:00 - 18:00<br />
 										Cumartesi: 09:00 - 14:00
 									</p>
@@ -159,25 +197,25 @@ const Footer = () => {
 				</div>
 
 				{/* Alt Footer */}
-				<div className="bg-black/20 py-4">
+				<div className="bg-black/20 py-3 md:py-4">
 					<div className="container mx-auto px-4">
 						<div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
 							<a 
 								href="https://www.adnbilisim.com.tr/" 
 								target="_blank" 
 								rel="noopener noreferrer"
-								className="text-sm text-white hover:text-white/80 transition-colors"
+								className="text-xs md:text-sm text-white hover:text-white/80 transition-colors touch-manipulation"
 							>
 								© {currentYear} ADN Bilişim. Tüm hakları saklıdır.
 							</a>
-							<div className="flex space-x-6 text-sm text-white">
-								<Link href="/gizlilik" className="hover:text-white transition-colors">
+							<div className="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-6 text-xs md:text-sm text-white">
+								<Link href="/gizlilik" className="hover:text-white transition-colors py-1 touch-manipulation">
 									Gizlilik Politikası
 								</Link>
-								<Link href="/kullanim-kosullari" className="hover:text-white transition-colors">
+								<Link href="/kullanim-kosullari" className="hover:text-white transition-colors py-1 touch-manipulation">
 									Kullanım Koşulları
 								</Link>
-								<Link href="/cerez-politikasi" className="hover:text-white transition-colors">
+								<Link href="/cerez-politikasi" className="hover:text-white transition-colors py-1 touch-manipulation">
 									Çerez Politikası
 								</Link>
 							</div>

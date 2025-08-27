@@ -36,8 +36,8 @@ const Header = () => {
 
 	return (
 		<header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-			{/* Üst Bilgi Çubuğu */}
-			<div className="bg-primary text-primary-foreground py-2">
+			{/* Üst Bilgi Çubuğu - Sadece Desktop */}
+			<div className="hidden md:block bg-primary text-primary-foreground py-2">
 				<div className="container mx-auto px-4 flex justify-between items-center text-sm">
 					<div className="flex items-center space-x-4">
 					<a href="tel:+905425094758" className="flex items-center space-x-2 hover:text-gray-200 transition-colors">
@@ -49,7 +49,7 @@ const Header = () => {
 						<span>dogukancetinkaya@okangokhan.com</span>
 					</a>
 				</div>
-					<div className="hidden md:flex items-center space-x-4">
+					<div className="flex items-center space-x-4">
 						<span>{translations.header.workingHours}</span>
 						<LanguageToggle />
 					</div>
@@ -57,13 +57,13 @@ const Header = () => {
 			</div>
 
 			{/* Ana Header */}
-			<div className="container mx-auto px-4 py-4">
+			<div className="container mx-auto px-4 py-3 md:py-4">
 				<div className="flex items-center justify-between">
 					{/* Logo */}
-					<Link href="/" className="flex items-center space-x-3">
+					<Link href="/" className="flex items-center space-x-2 md:space-x-3">
 						<motion.div
 							whileHover={{ scale: 1.05 }}
-							className="relative w-12 h-12"
+							className="relative w-10 h-10 md:w-12 md:h-12"
 						>
 							<Image
 								src="/images/logo.png"
@@ -74,10 +74,15 @@ const Header = () => {
 							/>
 						</motion.div>
 						<div>
-							<h1 className="text-xl font-bold text-foreground">OkanGökhan</h1>
-							<p className="text-sm text-muted-foreground">Serigrafi Makineleri</p>
+							<h1 className="text-lg md:text-xl font-bold text-foreground">OkanGökhan</h1>
+							<p className="text-xs md:text-sm text-muted-foreground">Serigrafi Makineleri</p>
 						</div>
 					</Link>
+
+					{/* Mobil Dil Seçici ve Menü */}
+					<div className="flex items-center space-x-2 md:hidden">
+						<LanguageToggle />
+					</div>
 
 					{/* Desktop Navigation */}
 					<nav className="hidden lg:flex items-center space-x-8">
@@ -184,84 +189,116 @@ const Header = () => {
 					<Sheet open={isOpen} onOpenChange={setIsOpen}>
 						<SheetTrigger asChild>
 							<Button variant="ghost" size="icon" className="lg:hidden">
-								<Menu className="h-6 w-6" />
+								<Menu className="h-5 w-5" />
 							</Button>
 						</SheetTrigger>
-						<SheetContent side="right" className="w-[320px] sm:w-[400px] bg-gradient-to-br from-white via-gray-50 to-blue-50 backdrop-blur-xl border-l border-gray-200/50 shadow-2xl">
+						<SheetContent side="right" className="w-[280px] sm:w-[320px] bg-white border-l border-gray-200 p-0 flex flex-col max-h-screen overflow-hidden">
 							<SheetTitle className="sr-only">Menü</SheetTitle>
-							<div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none" />
-							<nav className="flex flex-col space-y-2 mt-12 px-6 relative z-10">
-								{menuItems.map((item) => (
-									<div key={item.name}>
-										{item.name === "Ürünlerimiz" ? (
-											<div>
-												<button
-													className="group w-full p-4 rounded-xl bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex items-center justify-between"
-													onClick={() => setIsProductDropdownOpen(!isProductDropdownOpen)}
-												>
-													<span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">{item.name}</span>
-													<ChevronDown 
-														className={`h-5 w-5 text-gray-500 group-hover:text-primary transition-all duration-300 ${isProductDropdownOpen ? 'rotate-180' : ''}`} 
-													/>
-												</button>
-												<AnimatePresence>
-													{isProductDropdownOpen && (
-														<motion.div
-															initial={{ opacity: 0, height: 0 }}
-															animate={{ opacity: 1, height: "auto" }}
-															exit={{ opacity: 0, height: 0 }}
-															transition={{ duration: 0.3 }}
-															className="overflow-hidden"
-														>
-															<div className="mt-3 ml-2 space-y-1">
-																{productCategories.map((category, index) => (
-																	<motion.div
-																		key={category.name}
-																		initial={{ opacity: 0, x: -20 }}
-																		animate={{ opacity: 1, x: 0 }}
-																		transition={{ duration: 0.2, delay: index * 0.1 }}
-																	>
-																		<Link
-																			href={category.href}
-																			className="group block py-3 px-4 mx-1 rounded-lg bg-white/40 backdrop-blur-sm border border-gray-100/50 hover:bg-primary/5 hover:border-primary/20 hover:shadow-md transition-all duration-200"
-																			onClick={() => setIsOpen(false)}
-																		>
-																			<span className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">{category.name}</span>
-																		</Link>
-																	</motion.div>
-																))}
-																<motion.div
-																	initial={{ opacity: 0, y: 10 }}
-																	animate={{ opacity: 1, y: 0 }}
-																	transition={{ duration: 0.2, delay: 0.4 }}
-																	className="pt-2"
-																>
+							
+							{/* Mobil Header */}
+							<div className="bg-primary text-white p-4 mb-4 flex-shrink-0">
+								<div className="flex items-center space-x-3">
+									<div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+										<Image
+											src="/images/logo.png"
+											alt="Logo"
+											width={24}
+											height={24}
+											className="rounded"
+										/>
+									</div>
+									<div>
+										<h3 className="font-bold text-sm">OkanGökhan</h3>
+										<p className="text-xs text-white/80">Serigrafi Makineleri</p>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div className="border-t border-gray-100 pt-4 flex-1 flex flex-col overflow-hidden">
+								<nav className="px-4 space-y-1 flex-1 overflow-y-auto">
+									{menuItems.map((item) => (
+										<div key={item.name}>
+											{item.name === translations.header.products ? (
+												<div>
+													<button
+														className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors"
+														onClick={() => setIsProductDropdownOpen(!isProductDropdownOpen)}
+													>
+														<span className="font-medium text-gray-900">{item.name}</span>
+														<ChevronDown 
+															className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isProductDropdownOpen ? 'rotate-180' : ''}`} 
+														/>
+													</button>
+													<AnimatePresence>
+														{isProductDropdownOpen && (
+															<motion.div
+																initial={{ opacity: 0, height: 0 }}
+																animate={{ opacity: 1, height: "auto" }}
+																exit={{ opacity: 0, height: 0 }}
+																transition={{ duration: 0.2 }}
+																className="overflow-hidden ml-4 mt-1"
+															>
+																{productCategories.map((category) => (
 																	<Link
-																		href="/urunler"
-																		className="block py-3 px-6 mx-1 bg-gradient-to-r from-primary to-primary/80 text-white text-sm font-semibold rounded-xl hover:from-primary/90 hover:to-primary/70 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
+																		key={category.name}
+																		href={category.href}
+																		className="block py-2 px-3 text-sm text-gray-600 hover:text-primary hover:bg-primary/5 rounded transition-colors"
 																		onClick={() => setIsOpen(false)}
 																	>
-																			{translations.header.viewAllProducts}
-																		</Link>
-																</motion.div>
-															</div>
-													</motion.div>
-												)}
-											</AnimatePresence>
+																		{category.name}
+																	</Link>
+																))}
+																<Link
+																	href="/urunler"
+																	className="block py-2 px-3 mt-2 text-sm font-medium text-primary hover:bg-primary/5 rounded transition-colors"
+																	onClick={() => setIsOpen(false)}
+																>
+																	{translations.header.viewAllProducts}
+																</Link>
+															</motion.div>
+														)}
+													</AnimatePresence>
+												</div>
+											) : (
+												<Link
+													href={item.href}
+													className="block p-3 rounded-lg hover:bg-gray-50 transition-colors"
+													onClick={() => setIsOpen(false)}
+												>
+													<span className="font-medium text-gray-900">{item.name}</span>
+												</Link>
+											)}
 										</div>
-								) : (
-														<Link
-															href={item.href}
-															className="group block p-4 rounded-xl bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-															onClick={() => setIsOpen(false)}
-														>
-															<span className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">{item.name}</span>
-															</Link>
-								)}
+									))}
+								</nav>
+
+								{/* CTA Buttons */}
+								<div className="px-4 pt-4 pb-6 space-y-2 border-t border-gray-100 mt-4 flex-shrink-0">
+									<Button 
+										className="w-full" 
+										onClick={() => {
+											const message = translations.header.whatsappMessage;
+											const whatsappUrl = `https://wa.me/905425094758?text=${encodeURIComponent(message)}`;
+											window.open(whatsappUrl, '_blank');
+											setIsOpen(false);
+										}}
+									>
+										{translations.header.getQuote}
+									</Button>
+									<Button 
+										variant="outline" 
+										className="w-full"
+										asChild
+									>
+										<Link href="/iletisim" onClick={() => setIsOpen(false)}>
+											{translations.header.contact}
+										</Link>
+									</Button>
+								</div>
 							</div>
-						))}
-						</nav>
-					</SheetContent>
+						</SheetContent>
 					</Sheet>
 				</div>
 			</div>

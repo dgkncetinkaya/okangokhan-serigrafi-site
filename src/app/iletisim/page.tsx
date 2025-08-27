@@ -230,6 +230,7 @@ const ContactPage = () => {
                             value={formData.name}
                             onChange={(e) => handleInputChange("name", e.target.value)}
                             placeholder="Adınız ve soyadınız"
+                            className="min-h-[44px]"
                           />
                         </div>
                         <div>
@@ -239,9 +240,11 @@ const ContactPage = () => {
                           <Input
                             required
                             type="email"
+                            inputMode="email"
                             value={formData.email}
                             onChange={(e) => handleInputChange("email", e.target.value)}
                             placeholder="ornek@email.com"
+                            className="min-h-[44px]"
                           />
                         </div>
                       </div>
@@ -252,9 +255,12 @@ const ContactPage = () => {
                             Telefon
                           </label>
                           <Input
+                            type="tel"
+                            inputMode="tel"
                             value={formData.phone}
                             onChange={(e) => handleInputChange("phone", e.target.value)}
                             placeholder="+90 (5XX) XXX XX XX"
+                            className="min-h-[44px]"
                           />
                         </div>
                         <div>
@@ -265,6 +271,7 @@ const ContactPage = () => {
                             value={formData.company}
                             onChange={(e) => handleInputChange("company", e.target.value)}
                             placeholder="Firma adınız"
+                            className="min-h-[44px]"
                           />
                         </div>
                       </div>
@@ -278,6 +285,7 @@ const ContactPage = () => {
                           value={formData.subject}
                           onChange={(e) => handleInputChange("subject", e.target.value)}
                           placeholder="Mesajınızın konusu"
+                          className="min-h-[44px]"
                         />
                       </div>
 

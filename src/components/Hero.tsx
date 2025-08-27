@@ -82,6 +82,7 @@ const Hero = () => {
 						fill
 						className="object-cover"
 						priority
+						sizes="100vw"
 					/>
 					{/* Overlay */}
 					<div className="absolute inset-0 bg-black/40" />
@@ -91,24 +92,24 @@ const Hero = () => {
 			{/* Slayt Kontrol Butonları */}
 			<button
 				onClick={prevSlide}
-				className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
+				className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
 			>
-				<ChevronLeft className="w-6 h-6" />
+				<ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
 			</button>
 			<button
 				onClick={nextSlide}
-				className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
+				className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
 			>
-				<ChevronRight className="w-6 h-6" />
+				<ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
 			</button>
 
 			{/* Slayt İndikatörleri */}
-			<div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
+			<div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-2 md:space-x-3">
 				{slides.map((_, index) => (
 					<button
 						key={index}
 						onClick={() => goToSlide(index)}
-						className={`w-3 h-3 rounded-full transition-all duration-300 ${
+						className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
 							index === currentSlide 
 								? 'bg-white scale-125' 
 								: 'bg-white/50 hover:bg-white/80'
@@ -119,7 +120,7 @@ const Hero = () => {
 
 			{/* Merkezi İçerik */}
 			<div className="absolute inset-0 flex items-center justify-center z-20">
-				<div className="container mx-auto px-4">
+				<div className="container mx-auto px-4 md:px-6">
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={currentSlide}
@@ -134,7 +135,7 @@ const Hero = () => {
 								initial={{ opacity: 0, y: 30 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.8, delay: 0.2 }}
-								className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+								className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight px-2"
 							>
 								{currentSlideData.title}
 							</motion.h1>
@@ -144,7 +145,7 @@ const Hero = () => {
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.8, delay: 0.4 }}
-								className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed"
+								className="text-lg sm:text-xl md:text-2xl mb-4 md:mb-6 text-white/90 leading-relaxed px-2"
 							>
 								{currentSlideData.subtitle}
 							</motion.p>
@@ -154,7 +155,7 @@ const Hero = () => {
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.8, delay: 0.6 }}
-								className="text-lg mb-10 text-white/80 max-w-2xl mx-auto"
+								className="text-sm sm:text-base md:text-lg mb-6 md:mb-8 lg:mb-10 text-white/80 max-w-2xl mx-auto px-4 leading-relaxed"
 							>
 								{currentSlideData.description}
 							</motion.p>
@@ -164,15 +165,16 @@ const Hero = () => {
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.8, delay: 0.8 }}
+								className="px-4"
 							>
 								<Button 
 									size="lg" 
-									className="bg-white text-black hover:bg-white/90 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105"
+									className="bg-white text-black hover:bg-white/90 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 w-full sm:w-auto"
 									asChild
 								>
 									<Link href={currentSlideData.buttonLink}>
 										{currentSlideData.buttonText}
-										<ArrowRight className="ml-2 h-5 w-5" />
+										<ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
 									</Link>
 								</Button>
 							</motion.div>

@@ -1,7 +1,16 @@
 "use client";
 
-import Hero from "@/components/Hero";
+import dynamic from "next/dynamic";
 import ProductCard from "@/components/ProductCard";
+
+// Hero bileşenini dinamik olarak yükle
+const Hero = dynamic(() => import("@/components/Hero"), {
+  loading: () => (
+    <div className="h-screen bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+    </div>
+  ),
+});
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -139,7 +148,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12">
             {sampleProducts.map((product, index) => (
               <motion.div
                 key={product.id}
